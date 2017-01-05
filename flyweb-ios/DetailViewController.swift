@@ -10,35 +10,48 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var detailWebView: UIWebView!
+  @IBOutlet weak var detailWebView: UIWebView!
 
-    func configureView() {
-        // Update the user interface for the detail item.
-        if let detail = self.detailItem {
-            title = detail.description
-        }
+  func configureView() {
+    // Update the user interface for the detail item.
+    if let service = self.detailItem {
+      title = service.name
 
-        detailWebView?.loadRequest(URLRequest.init(url: URL.init(string: "https://www.mozilla.org/")!))
+      if (detailWebView != nil) {
+        let url = service.url()
+        
+        detailWebView.loadRequest(URLRequest.init(url: url))
+        debugPrint("[DetailViewController]", "Loading URL: ", url)
+      }
     }
+  }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        self.configureView()
+  @IBAction func back() {
+    detailWebView.goBack()
+  }
+  
+  @IBAction func forward() {
+    detailWebView.goForward()
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    // Do any additional setup after loading the view, typically from a nib.
+    self.configureView()
+  }
+
+  override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+    
+    // Dispose of any resources that can be recreated.
+  }
+
+  var detailItem: NetService? {
+    didSet {
+      // Update the view.
+      self.configureView()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    var detailItem: NSDate? {
-        didSet {
-            // Update the view.
-            self.configureView()
-        }
-    }
-
+  }
 
 }
-

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0A85D1C1E1E011200E0DCA8 /* MDNSDiscoveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A85D1B1E1E011200E0DCA8 /* MDNSDiscoveryService.swift */; };
 		D0AF51231E1DDCED004F51C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AF51221E1DDCED004F51C3 /* AppDelegate.swift */; };
 		D0AF51251E1DDCED004F51C3 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AF51241E1DDCED004F51C3 /* MasterViewController.swift */; };
 		D0AF51271E1DDCED004F51C3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AF51261E1DDCED004F51C3 /* DetailViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D0A85D1B1E1E011200E0DCA8 /* MDNSDiscoveryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDNSDiscoveryService.swift; sourceTree = "<group>"; };
 		D0AF511F1E1DDCED004F51C3 /* flyweb-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "flyweb-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0AF51221E1DDCED004F51C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0AF51241E1DDCED004F51C3 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				D0AF512B1E1DDCED004F51C3 /* Assets.xcassets */,
 				D0AF512D1E1DDCED004F51C3 /* LaunchScreen.storyboard */,
 				D0AF51301E1DDCED004F51C3 /* Info.plist */,
+				D0A85D1B1E1E011200E0DCA8 /* MDNSDiscoveryService.swift */,
 			);
 			path = "flyweb-ios";
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0A85D1C1E1E011200E0DCA8 /* MDNSDiscoveryService.swift in Sources */,
 				D0AF51271E1DDCED004F51C3 /* DetailViewController.swift in Sources */,
 				D0AF51251E1DDCED004F51C3 /* MasterViewController.swift in Sources */,
 				D0AF51231E1DDCED004F51C3 /* AppDelegate.swift in Sources */,
@@ -518,6 +522,7 @@
 				D0AF514B1E1DDCED004F51C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D0AF514C1E1DDCED004F51C3 /* Build configuration list for PBXNativeTarget "flyweb-iosTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +531,7 @@
 				D0AF514E1E1DDCED004F51C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D0AF514F1E1DDCED004F51C3 /* Build configuration list for PBXNativeTarget "flyweb-iosUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +540,7 @@
 				D0AF51511E1DDCED004F51C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

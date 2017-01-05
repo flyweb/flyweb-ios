@@ -46,7 +46,16 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Item" id="3z4-0k-N2G"/>
+                                    <barButtonItem image="BackButton" id="3z4-0k-N2G">
+                                        <connections>
+                                            <action selector="back" destination="JEX-9P-axG" id="Tdg-Vz-BYr"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem image="ForwardButton" id="tlA-XA-6l2">
+                                        <connections>
+                                            <action selector="forward" destination="JEX-9P-axG" id="cbV-nA-ux2"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -136,6 +145,10 @@
             <point key="canvasLocation" x="-45" y="129"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BackButton" width="24" height="32"/>
+        <image name="ForwardButton" width="24" height="32"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6S0-TO-JiA"/>
     </inferredMetricsTieBreakers>
