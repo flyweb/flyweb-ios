@@ -16,6 +16,7 @@
 		D0AF512F1E1DDCED004F51C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0AF512D1E1DDCED004F51C3 /* LaunchScreen.storyboard */; };
 		D0AF513A1E1DDCED004F51C3 /* flyweb_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AF51391E1DDCED004F51C3 /* flyweb_iosTests.swift */; };
 		D0AF51451E1DDCED004F51C3 /* flyweb_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AF51441E1DDCED004F51C3 /* flyweb_iosUITests.swift */; };
+		D0C815081E20305E0065147F /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C815071E20305E0065147F /* GradientView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		D0AF51401E1DDCED004F51C3 /* flyweb-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "flyweb-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0AF51441E1DDCED004F51C3 /* flyweb_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flyweb_iosUITests.swift; sourceTree = "<group>"; };
 		D0AF51461E1DDCED004F51C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0C815071E20305E0065147F /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				D0AF512B1E1DDCED004F51C3 /* Assets.xcassets */,
 				D0AF512D1E1DDCED004F51C3 /* LaunchScreen.storyboard */,
 				D0AF51301E1DDCED004F51C3 /* Info.plist */,
+				D0C815071E20305E0065147F /* GradientView.swift */,
 				D0A85D1B1E1E011200E0DCA8 /* MDNSDiscoveryService.swift */,
 			);
 			path = "flyweb-ios";
@@ -270,6 +273,7 @@
 			files = (
 				D0A85D1C1E1E011200E0DCA8 /* MDNSDiscoveryService.swift in Sources */,
 				D0AF51271E1DDCED004F51C3 /* DetailViewController.swift in Sources */,
+				D0C815081E20305E0065147F /* GradientView.swift in Sources */,
 				D0AF51251E1DDCED004F51C3 /* MasterViewController.swift in Sources */,
 				D0AF51231E1DDCED004F51C3 /* AppDelegate.swift in Sources */,
 			);

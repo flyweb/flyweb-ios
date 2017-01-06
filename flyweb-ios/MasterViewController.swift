@@ -8,8 +8,10 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController, MDNSDiscoveryServiceDelegate {
+class MasterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MDNSDiscoveryServiceDelegate {
 
+  @IBOutlet weak var tableView: UITableView!
+  
   var detailViewController: DetailViewController? = nil
   var flywebDiscoveryService: MDNSDiscoveryService = MDNSDiscoveryService(type: "_flyweb._tcp")
   var httpDiscoveryService: MDNSDiscoveryService = MDNSDiscoveryService(type: "_http._tcp")
@@ -23,7 +25,7 @@ class MasterViewController: UITableViewController, MDNSDiscoveryServiceDelegate 
       let controllers = split.viewControllers
       self.detailViewController = (controllers[controllers.count - 1] as! UINavigationController).topViewController as? DetailViewController
     }
-
+    
     flywebDiscoveryService.delegate = self
     httpDiscoveryService.delegate = self
   }
@@ -32,7 +34,10 @@ class MasterViewController: UITableViewController, MDNSDiscoveryServiceDelegate 
     flywebDiscoveryService.start()
     httpDiscoveryService.start()
 
-    self.clearsSelectionOnViewWillAppear = self.splitViewController!.isCollapsed
+    if let indexPath = self.tableView.indexPathForSelectedRow {
+      self.tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
     super.viewWillAppear(animated)
   }
   
@@ -65,21 +70,75 @@ class MasterViewController: UITableViewController, MDNSDiscoveryServiceDelegate 
 
   // MARK: - Table View
 
-  override func numberOfSections(in tableView: UITableView) -> Int {
+  func numberOfSections(in tableView: UITableView) -> Int {
     return 1
   }
+  
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    return "Nearby services"
+  }
+  
+  func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    (view as! UITableViewHeaderFooterView).textLabel?.textColor = UIColor.white
+  }
 
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return services.count
   }
 
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
     let service = services[indexPath.row]
     cell.textLabel!.text = service.name
     return cell
   }
 
+//  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//    cell.backgroundColor = UIColor.clear
+//
+//    let cornerRadius: CGFloat = 10
+//    let layer: CAShapeLayer = CAShapeLayer()
+//    let pathRef: CGMutablePath = CGMutablePath()
+//    let bounds: CGRect = CGRect(x: 10, y: 0, width: cell.bounds.width - 75, height: cell.bounds.height)
+//
+//    var addLine: Bool = false
+//    
+//    if (indexPath.row == 0 && indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1) {
+//      pathRef.addRoundedRect(in: bounds, cornerWidth: cornerRadius, cornerHeight: cornerRadius)
+//    } else if (indexPath.row == 0) {
+//      pathRef.move(to: CGPoint(x: bounds.minX, y: bounds.maxY))
+//      pathRef.addArc(tangent1End: CGPoint(x: bounds.minX, y: bounds.minY), tangent2End: CGPoint(x: bounds.midX, y: bounds.minY), radius: cornerRadius)
+//      pathRef.addArc(tangent1End: CGPoint(x: bounds.maxX, y: bounds.minY), tangent2End: CGPoint(x: bounds.maxX, y: bounds.midY), radius: cornerRadius)
+//      pathRef.addLine(to: CGPoint(x: bounds.maxX, y: bounds.maxY))
+//      addLine = true
+//    } else if (indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1) {
+//      pathRef.move(to: CGPoint(x: bounds.minX, y: bounds.minY))
+//      pathRef.addArc(tangent1End: CGPoint(x: bounds.minX, y: bounds.maxY), tangent2End: CGPoint(x: bounds.midX, y: bounds.maxY), radius: cornerRadius)
+//      pathRef.addArc(tangent1End: CGPoint(x: bounds.maxX, y: bounds.maxY), tangent2End: CGPoint(x: bounds.maxX, y: bounds.midY), radius: cornerRadius)
+//      pathRef.addLine(to: CGPoint(x: bounds.maxX, y: bounds.minY))
+//    } else {
+//      pathRef.addRect(bounds)
+//      addLine = true
+//    }
+//    
+//    layer.path = pathRef
+//    layer.fillColor = UIColor(red: 255 / 255.0, green: 255 / 255.0, blue: 255 / 255.0, alpha: 0.8).cgColor
+//    
+//    if (addLine == true) {
+//      let lineLayer: CALayer = CALayer()
+//      let lineHeight: CGFloat = (1.0 / UIScreen.main.scale)
+//      lineLayer.frame = CGRect(x: bounds.minX + 10, y: bounds.size.height - lineHeight, width: bounds.size.width - 10, height: lineHeight)
+//      lineLayer.backgroundColor = tableView.separatorColor?.cgColor
+//      layer.addSublayer(lineLayer)
+//    }
+//
+//    let testView: UIView = UIView(frame: bounds)
+//    testView.layer.insertSublayer(layer, at: 0)
+//    testView.backgroundColor = UIColor.clear
+//
+//    cell.backgroundView = testView
+//  }
+  
   func discoveryService(discoveryService: MDNSDiscoveryService, didFind service: NetService) {
     let indexPath = IndexPath(row: services.count, section: 0)
     services.append(service)
